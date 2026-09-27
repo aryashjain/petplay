@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pawdio — The Ball That Plays Piano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<div id="bg"></div>
+<div id="floaters"></div>
+
+<div id="viewport">
+<main id="deck">
+
+  <!-- ============ SLIDE 1 : MUSIC MAKES DOGS GO WOAAH ============ -->
+  <section class="slide s1">
+    <div class="brand a" data-a="drop" style="--d:.1s">
+      <span class="ball-logo"></span> PAWDIO
+    </div>
+    <h1 class="a" data-a="pop" style="--d:.35s">
+      Music makes dogs go
+      <span class="woah">W<i>O</i><i>A</i><i>A</i><i>H</i>!</span>
+    </h1>
+    <p class="sub a" data-a="up" style="--d:.6s">Before we built anything, we asked a simple question:<br/><b>what actually happens when a dog hears music?</b></p>
+
+    <div class="facts">
+      <div class="fact a" data-a="left" style="--d:.9s">
+        <div class="fact-ico">😌</div>
+        <h3>Calmer pups</h3>
+        <p>Shelter dogs <b>barked less and rested more</b> when classical music was playing.</p>
+        <small>Kogan, Schoenfeld-Tacher &amp; Simon, 2012</small>
+      </div>
+      <div class="fact a" data-a="up" style="--d:1.1s">
+        <div class="fact-ico">🎸</div>
+        <h3>Less stress</h3>
+        <p>Soft rock &amp; reggae were linked to <b>lower stress</b> in kennelled dogs.</p>
+        <small>Univ. of Glasgow &amp; Scottish SPCA, 2017</small>
+      </div>
+      <div class="fact a" data-a="right" style="--d:1.3s">
+        <div class="fact-ico">👂</div>
+        <h3>Super ears</h3>
+        <p>Dogs hear up to <b>~45 kHz</b>, more than twice the human range (~20 kHz).</p>
+        <small>Every note hits different 🐶</small>
+      </div>
+    </div>
+
+    <div class="gif g1 a" data-a="spin" style="--d:.5s"><img src="assets/gifs/head1.gif" alt="Dog with headphones" /></div>
+    <div class="gif g2 a" data-a="spin" style="--d:.7s"><img src="assets/gifs/dance1.gif" alt="Cartoon dogs dancing" /></div>
+    <div class="gif g3 a" data-a="spin" style="--d:.9s"><img src="assets/gifs/dance2.gif" alt="DJ dog" /></div>
+    <div class="gif g4 a" data-a="spin" style="--d:1.1s"><img src="assets/gifs/head2.gif" alt="Cartoon dog listening to music" /></div>
+
+    <div class="eq a" data-a="up" style="--d:1.5s">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </section>
+
+  <!-- ============ SLIDE 2 : THE IDEA ============ -->
+  <section class="slide s2">
+    <div class="kicker a" data-a="drop" style="--d:.1s">THE IDEA 💡</div>
+    <h1 class="a" data-a="pop" style="--d:.3s">What if the <span class="hl">ball</span> was the <span class="hl2">band?</span></h1>
+    <p class="sub a" data-a="up" style="--d:.5s">Dogs already love two things: <b>chasing balls</b> and <b>good vibes</b>. So we fused them.<br/>Every bounce, roll and shake becomes <b>live piano music</b>, played in the browser.</p>
+
+    <div class="story">
+      <div class="step a" data-a="up" style="--d:.8s">
+        <div class="step-gif"><img src="assets/gifs/ball1.gif" alt="Dog grabbing a ball" /></div>
+        <div class="num">1</div>
+        <h3>Dog plays</h3>
+        <p>Fetch, chomp, roll, zoomies. Just normal dog stuff.</p>
+      </div>
+      <div class="arrow a" data-a="zoom" style="--d:1.0s">➜</div>
+      <div class="step a" data-a="up" style="--d:1.1s">
+        <div class="step-gif ball-sense">
+          <div class="sense-ball"><span></span></div>
+          <div class="wave w1"></div><div class="wave w2"></div><div class="wave w3"></div>
+        </div>
+        <div class="num">2</div>
+        <h3>Ball senses</h3>
+        <p>A hidden motion sensor feels every hit &amp; spin, 200× a second.</p>
+      </div>
+      <div class="arrow a" data-a="zoom" style="--d:1.3s">➜</div>
+      <div class="step a" data-a="up" style="--d:1.4s">
+        <div class="step-gif"><img src="assets/gifs/piano2.gif" alt="Dog playing piano" /></div>
+        <div class="num">3</div>
+        <h3>Piano plays</h3>
+        <p>The web app turns motion into music that is always in key. 🎶</p>
+      </div>
+    </div>
+
+    <div class="piano-stage a" data-a="up" style="--d:1.7s">
+      <div class="bouncer" title="Click me!"></div>
+      <div class="keys" id="keys2"></div>
+      <div class="hint">👆 click the ball, it plays!</div>
+    </div>
+
+    <div class="gif g5 a" data-a="spin" style="--d:1.9s"><img src="assets/gifs/fetch2.gif" alt="Dog with ball" /></div>
+  </section>
+
+  <!-- ============ SLIDE 3 : HARDWARE + FIRMWARE ============ -->
+  <section class="slide s3">
+    <div class="kicker a" data-a="drop" style="--d:.1s">TECH · PART 1 — INSIDE THE BALL 🔧</div>
+    <h2 class="a" data-a="left" style="--d:.25s">Hardware &amp; Firmware</h2>
+
+    <div class="s3-grid">
+      <!-- Components -->
+      <div class="parts">
+        <div class="part a" data-a="left" style="--d:.5s">
+          <svg viewBox="0 0 200 130" class="pcb">
+            <rect x="5" y="10" width="190" height="110" rx="8" fill="#1b2a6b" stroke="#3d5bd9" stroke-width="2"/>
+            <rect x="20" y="28" width="95" height="74" rx="4" fill="#c9ced8" stroke="#9aa2b1" stroke-width="2"/>
+            <text x="67" y="62" text-anchor="middle" font-family="JetBrains Mono" font-size="13" fill="#333" font-weight="700">ESP32-C6</text>
+            <text x="67" y="80" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#555">RISC-V · Wi-Fi 6</text>
+            <path d="M125 28 h15 v12 h-10 v10 h10 v12 h-10 v10 h10 v12 h-15" fill="none" stroke="#e8c26a" stroke-width="3"/>
+            <rect x="160" y="50" width="30" height="30" rx="5" fill="#8a8f99"/>
+            <rect x="166" y="58" width="18" height="14" rx="3" fill="#222"/>
+            <g fill="#e8c26a"><circle cx="20" cy="18" r="3"/><circle cx="35" cy="18" r="3"/><circle cx="50" cy="18" r="3"/><circle cx="65" cy="18" r="3"/><circle cx="80" cy="18" r="3"/><circle cx="95" cy="18" r="3"/><circle cx="110" cy="18" r="3"/><circle cx="20" cy="112" r="3"/><circle cx="35" cy="112" r="3"/><circle cx="50" cy="112" r="3"/><circle cx="65" cy="112" r="3"/><circle cx="80" cy="112" r="3"/><circle cx="95" cy="112" r="3"/><circle cx="110" cy="112" r="3"/></g>
+            <circle cx="145" cy="100" r="4" fill="#3cff7a" class="blink"/>
+          </svg>
+          <div>
+            <h3>ESP32-C6</h3>
+            <p>RISC-V MCU with <b>Wi-Fi 6</b> + BLE 5. Tiny, cheap, and has deep-sleep modes that sip power.</p>
+          </div>
+        </div>
+
+        <div class="part a" data-a="left" style="--d:.7s">
+          <svg viewBox="0 0 200 130" class="pcb">
+            <rect x="30" y="15" width="140" height="100" rx="8" fill="#5b2b8a" stroke="#9d6bd6" stroke-width="2"/>
+            <rect x="75" y="40" width="50" height="50" rx="3" fill="#15151a"/>
+            <text x="100" y="69" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#bbb">MPU</text>
+            <g fill="#e8c26a"><circle cx="45" cy="28" r="4"/><circle cx="60" cy="28" r="4"/><circle cx="75" cy="28" r="4"/><circle cx="90" cy="28" r="4"/><circle cx="105" cy="28" r="4"/><circle cx="120" cy="28" r="4"/><circle cx="135" cy="28" r="4"/><circle cx="150" cy="28" r="4"/></g>
+            <g class="axes">
+              <line x1="100" y1="65" x2="160" y2="65" stroke="#ff5a7a" stroke-width="3"/>
+              <line x1="100" y1="65" x2="100" y2="112" stroke="#4ce0b3" stroke-width="3"/>
+              <line x1="100" y1="65" x2="60" y2="100" stroke="#ffd166" stroke-width="3"/>
+            </g>
+            <text x="163" y="60" font-size="11" fill="#ff5a7a" font-family="JetBrains Mono">X</text>
+            <text x="104" y="122" font-size="11" fill="#4ce0b3" font-family="JetBrains Mono">Y</text>
+            <text x="48" y="108" font-size="11" fill="#ffd166" font-family="JetBrains Mono">Z</text>
+          </svg>
+          <div>
+            <h3>MPU 6-axis IMU</h3>
+            <p>3-axis <b>accelerometer</b> + 3-axis <b>gyroscope</b> on <b>I²C</b>. Feels bumps (±16 g) and spins (±2000 °/s).</p>
+          </div>
+        </div>
+
+        <div class="part a" data-a="left" style="--d:.9s">
+          <svg viewBox="0 0 200 130" class="pcb">
+            <rect x="25" y="30" width="140" height="70" rx="10" fill="#b8bec9" stroke="#8b93a1" stroke-width="2"/>
+            <rect x="35" y="40" width="120" height="50" rx="6" fill="#dfe3ea"/>
+            <rect x="40" y="46" width="0" height="38" rx="4" fill="#3cff7a" class="charge"/>
+            <text x="95" y="71" text-anchor="middle" font-family="JetBrains Mono" font-size="12" fill="#333" font-weight="700">3.7V LiPo</text>
+            <path d="M165 55 C185 55 185 40 195 40" stroke="#e63946" stroke-width="4" fill="none"/>
+            <path d="M165 75 C185 75 185 90 195 90" stroke="#111" stroke-width="4" fill="none"/>
+          </svg>
+          <div>
+            <h3>Small LiPo battery</h3>
+            <p>Rechargeable cell, <b>fully sealed</b> inside a chew-proof ball. The sleep mode keeps it alive for days.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Firmware pipeline -->
+      <div class="firmware">
+        <div class="fw-title a" data-a="right" style="--d:.6s">⚙️ Firmware pipeline</div>
+        <div class="pipe">
+          <div class="node a" data-a="pop" style="--d:.8s"><b>200 Hz+</b><span>I²C sensor read</span></div>
+          <div class="link a" data-a="zoom" style="--d:.9s"><i></i></div>
+          <div class="node a" data-a="pop" style="--d:1.0s"><b>Light filter</b><span>low-pass kills jitter</span></div>
+          <div class="link a" data-a="zoom" style="--d:1.1s"><i></i></div>
+          <div class="node hot a" data-a="pop" style="--d:1.2s"><b>💥 Impact detect</b><span>|a| spike &gt; threshold</span></div>
+          <div class="link a" data-a="zoom" style="--d:1.3s"><i></i></div>
+          <div class="node a" data-a="pop" style="--d:1.4s"><b>Binary pack</b><span>compact frames</span></div>
+          <div class="link a" data-a="zoom" style="--d:1.5s"><i></i></div>
+          <div class="node a" data-a="pop" style="--d:1.6s"><b>📡 WebSocket</b><span>over Wi-Fi</span></div>
+        </div>
+
+        <div class="packet a" data-a="up" style="--d:1.8s">
+          <div class="pk-label">One frame on the wire (~20 bytes vs ~120 as JSON)</div>
+          <div class="bytes">
+            <span class="b t">type</span><span class="b s">seq</span><span class="b ts">time&nbsp;ms</span>
+            <span class="b ax">ax</span><span class="b ax">ay</span><span class="b ax">az</span>
+            <span class="b gx">gx</span><span class="b gx">gy</span><span class="b gx">gz</span>
+          </div>
+        </div>
+
+        <div class="features">
+          <div class="feat a" data-a="up" style="--d:2.0s">🔁 <b>Auto-reconnect</b><br/>Wi-Fi &amp; socket back-off retry</div>
+          <div class="feat a" data-a="up" style="--d:2.15s">😴 <b>Sleep when still</b><br/>IMU motion interrupt wakes it</div>
+          <div class="feat a" data-a="up" style="--d:2.3s">📦 <b>Raw-ish data</b><br/>the app decides the music</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gif g6 a" data-a="spin" style="--d:2.4s"><img src="assets/gifs/puppy1.gif" alt="Puppy with toy" /></div>
+  </section>
+
+  <!-- ============ SLIDE 4 : WEB APP ============ -->
+  <section class="slide s4">
+    <div class="kicker a" data-a="drop" style="--d:.1s">TECH · PART 2 — THE MUSIC BRAIN 🎹</div>
+    <h2 class="a" data-a="left" style="--d:.25s">Web App: motion ➜ music, live</h2>
+
+    <div class="s4-grid">
+      <div class="left-col">
+        <div class="tools">
+          <div class="tool a" data-a="pop" style="--d:.5s"><div class="logo html">5</div>HTML</div>
+          <div class="tool a" data-a="pop" style="--d:.6s"><div class="logo css">3</div>CSS</div>
+          <div class="tool a" data-a="pop" style="--d:.7s"><div class="logo js">JS</div>JavaScript</div>
+          <div class="tool a" data-a="pop" style="--d:.8s"><div class="logo wa">〰</div>Web Audio</div>
+          <div class="tool a" data-a="pop" style="--d:.9s"><div class="logo ws">⇄</div>WebSocket</div>
+          <div class="tool a" data-a="pop" style="--d:1.0s"><div class="logo cv">◐</div>Canvas</div>
+        </div>
+        <p class="note a" data-a="up" style="--d:1.1s">No phone app, no install. <b>Open a web page</b> and the ball starts playing.</p>
+
+        <div class="map">
+          <div class="map-row a" data-a="left" style="--d:1.3s">
+            <span class="in">💥 Impact strength</span><span class="to">➜</span><span class="out">Note <b>velocity</b> (loudness)</span>
+          </div>
+          <div class="map-row a" data-a="left" style="--d:1.45s">
+            <span class="in">🌀 Rotation speed</span><span class="to">➜</span><span class="out"><b>Pitch</b> goes up</span>
+          </div>
+          <div class="map-row a" data-a="left" style="--d:1.6s">
+            <span class="in">🌪️ Spin energy</span><span class="to">➜</span><span class="out">Note <b>density</b> (more notes)</span>
+          </div>
+          <div class="map-row a" data-a="left" style="--d:1.75s">
+            <span class="in">🎼 Scale lock</span><span class="to">➜</span><span class="out">Every note <b>snaps to key</b>, never harsh</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- App mockup -->
+      <div class="app a" data-a="right" style="--d:.7s">
+        <div class="app-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="url">pawdio.local</span>
+          <span class="status"><i class="led"></i> Connected · 200 Hz</span>
+        </div>
+        <canvas id="viz" width="760" height="300"></canvas>
+        <div class="mini-keys" id="keys4"></div>
+        <div class="controls">
+          <label>Scale
+            <select id="scaleSel"><option>C Major Pentatonic</option><option>A Minor Pentatonic</option><option>D Dorian</option><option>Lydian Dream</option></select>
+          </label>
+          <label>Tempo <input type="range" min="60" max="160" value="96" /><em>96 bpm</em></label>
+          <label>Volume <input type="range" min="0" max="100" value="70" /><em>70%</em></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="flow a" data-a="up" style="--d:2.0s">
+      <span>WebSocket</span><b>➜</b><span>Decode bytes</span><b>➜</b><span>Map motion</span><b>➜</b><span>Snap to scale</span><b>➜</b><span>Piano synth</span><b>➜</b><span>🔊 Speakers</span>
+    </div>
+
+    <div class="gif g7 a" data-a="spin" style="--d:2.2s"><img src="assets/gifs/piano3.gif" alt="Dog on piano keys" /></div>
+  </section>
+
+  <!-- ============ SLIDE 5 : FUTURE SCOPE ============ -->
+  <section class="slide s5">
+    <div class="kicker a" data-a="drop" style="--d:.1s">WHAT'S NEXT 🚀</div>
+    <h2 class="a" data-a="pop" style="--d:.25s">One tiny chip, a whole <span class="hl">toy box</span> of ideas</h2>
+
+    <div class="future">
+      <div class="card a" data-a="flip" style="--d:.5s">
+        <div class="c-ico">🧸</div><h3>Musical plushies</h3>
+        <p>Soft toys that <b>sing when squeezed</b> or cuddled. Same chip, sewn into the stuffing.</p>
+      </div>
+      <div class="card a" data-a="flip" style="--d:.65s">
+        <div class="c-ico">🪢</div><h3>Tug-of-war ropes</h3>
+        <p>Pull harder, get a <b>bigger crescendo</b>. Two dogs, one duet.</p>
+      </div>
+      <div class="card a" data-a="flip" style="--d:.8s">
+        <div class="c-ico">🐱</div><h3>Cat &amp; small pets</h3>
+        <p>Feather wands and roll-balls tuned for <b>quick, tiny swipes</b>.</p>
+      </div>
+      <div class="card a" data-a="flip" style="--d:.95s">
+        <div class="c-ico">📊</div><h3>Pet health insights</h3>
+        <p>Play-time stats, energy trends and <b>activity alerts</b> for owners &amp; vets.</p>
+      </div>
+      <div class="card a" data-a="flip" style="--d:1.1s">
+        <div class="c-ico">🎻</div><h3>Multi-toy jam band</h3>
+        <p>Each toy is an instrument: ball = piano, rope = strings, plush = drums.</p>
+      </div>
+      <div class="card a" data-a="flip" style="--d:1.25s">
+        <div class="c-ico">🧒</div><h3>Kids &amp; therapy</h3>
+        <p>Sensory toys for <b>children</b> and gentle, music-led <b>rehab for senior dogs</b>.</p>
+      </div>
+    </div>
+
+    <div class="gif g8 a" data-a="spin" style="--d:1.5s"><img src="assets/gifs/zoom1.gif" alt="Dog zoomies" /></div>
+    <div class="gif g9 a" data-a="spin" style="--d:1.7s"><img src="assets/gifs/ball2.gif" alt="Puppy with ball" /></div>
+  </section>
+
+  <!-- ============ SLIDE 6 : THANK YOU ============ -->
+  <section class="slide s6">
+    <div class="collage">
+      <div class="gif c1 a" data-a="spin" style="--d:.2s"><img src="assets/gifs/ball4.gif" alt="Ball is life" /></div>
+      <div class="gif c2 a" data-a="spin" style="--d:.35s"><img src="assets/gifs/piano1.gif" alt="Dog playing organ" /></div>
+      <div class="gif c3 a" data-a="spin" style="--d:.5s"><img src="assets/gifs/dance1.gif" alt="Dancing dogs" /></div>
+      <div class="gif c4 a" data-a="spin" style="--d:.65s"><img src="assets/gifs/head1.gif" alt="Dog with headphones" /></div>
+    </div>
+    <h1 class="a" data-a="pop" style="--d:.8s">Thank <span class="hl">you!</span> 🐾</h1>
+    <p class="sub a" data-a="up" style="--d:1.0s"><b>Pawdio</b>: every fetch is a song.</p>
+    <div class="big-ball a" data-a="drop" style="--d:1.3s" title="Throw it!"><span></span></div>
+    <div class="hint a" data-a="up" style="--d:1.6s">👆 throw the ball for a little tune · Questions?</div>
+  </section>
+
+</main>
+</div>
+
+<nav id="nav">
+  <button id="prev" aria-label="Previous slide">‹</button>
+  <div id="dots"></div>
+  <button id="next" aria-label="Next slide">›</button>
+</nav>
+<div id="progress"><i></i></div>
+<div id="help">← → / space to navigate · F fullscreen</div>
+
+<script src="app.js"></script>
+</body>
+</html>
