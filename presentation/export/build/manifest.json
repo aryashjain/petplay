@@ -19,7 +19,7 @@
         "x": 50,
         "y": 90,
         "w": 1820,
-        "h": 405.1875,
+        "h": 383.1875,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s1_01.png"
       },
       {
@@ -27,7 +27,7 @@
         "anim": "up",
         "delay": 0.6,
         "x": 50,
-        "y": 393.1875,
+        "y": 371.1875,
         "w": 1420,
         "h": 207,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s1_02.png"
@@ -37,29 +37,29 @@
         "anim": "left",
         "delay": 0.9,
         "x": 50,
-        "y": 520.1875,
-        "w": 493.328125,
-        "h": 463.03125,
+        "y": 486.1875,
+        "w": 496,
+        "h": 351.171875,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s1_03.png"
       },
       {
         "idx": 4,
         "anim": "up",
         "delay": 1.1,
-        "x": 453.328125,
-        "y": 520.1875,
-        "w": 493.34375,
-        "h": 463.03125,
+        "x": 452,
+        "y": 486.1875,
+        "w": 496,
+        "h": 351.171875,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s1_04.png"
       },
       {
         "idx": 5,
         "anim": "right",
         "delay": 1.3,
-        "x": 856.671875,
-        "y": 520.1875,
-        "w": 493.328125,
-        "h": 463.03125,
+        "x": 854,
+        "y": 486.1875,
+        "w": 496,
+        "h": 351.171875,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s1_05.png"
       },
       {
@@ -132,13 +132,98 @@
       },
       {
         "idx": 10,
-        "anim": "up",
+        "anim": "left",
         "delay": 1.5,
         "x": 50,
-        "y": 870,
-        "w": 1820,
-        "h": 190,
+        "y": 782,
+        "w": 370,
+        "h": 219,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s1_10.png"
+      },
+      {
+        "idx": 11,
+        "anim": "spin",
+        "delay": 1.6,
+        "x": 400,
+        "y": 820,
+        "w": 140,
+        "h": 140,
+        "gif": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/assets/gifs/play1.gif",
+        "ring": [
+          255,
+          79,
+          163
+        ],
+        "rot": -6,
+        "border": 6
+      },
+      {
+        "idx": 12,
+        "anim": "spin",
+        "delay": 1.72,
+        "x": 570,
+        "y": 820,
+        "w": 140,
+        "h": 140,
+        "gif": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/assets/gifs/play2.gif",
+        "ring": [
+          255,
+          210,
+          63
+        ],
+        "rot": 5,
+        "border": 6
+      },
+      {
+        "idx": 13,
+        "anim": "spin",
+        "delay": 1.84,
+        "x": 740,
+        "y": 820,
+        "w": 140,
+        "h": 140,
+        "gif": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/assets/gifs/play3.gif",
+        "ring": [
+          62,
+          242,
+          192
+        ],
+        "rot": -4,
+        "border": 6
+      },
+      {
+        "idx": 14,
+        "anim": "spin",
+        "delay": 1.96,
+        "x": 910,
+        "y": 820,
+        "w": 140,
+        "h": 140,
+        "gif": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/assets/gifs/play4.gif",
+        "ring": [
+          77,
+          163,
+          255
+        ],
+        "rot": 6,
+        "border": 6
+      },
+      {
+        "idx": 15,
+        "anim": "spin",
+        "delay": 2.08,
+        "x": 1080,
+        "y": 820,
+        "w": 140,
+        "h": 140,
+        "gif": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/assets/gifs/play5.gif",
+        "ring": [
+          255,
+          138,
+          61
+        ],
+        "rot": -5,
+        "border": 6
       }
     ],
     [
@@ -178,7 +263,7 @@
         "delay": 0.8,
         "x": 50,
         "y": 317.59375,
-        "w": 505.78125,
+        "w": 491.125,
         "h": 481.390625,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s2_03.png"
       },
@@ -186,7 +271,7 @@
         "idx": 4,
         "anim": "zoom",
         "delay": 1,
-        "x": 461.78125,
+        "x": 443.125,
         "y": 459.78125,
         "w": 179.3125,
         "h": 197,
@@ -196,9 +281,9 @@
         "idx": 5,
         "anim": "up",
         "delay": 1.1,
-        "x": 547.09375,
+        "x": 524.4375,
         "y": 317.59375,
-        "w": 505.796875,
+        "w": 491.125,
         "h": 481.390625,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s2_05.png"
       },
@@ -206,7 +291,7 @@
         "idx": 6,
         "anim": "zoom",
         "delay": 1.3,
-        "x": 958.890625,
+        "x": 917.5625,
         "y": 459.78125,
         "w": 179.3125,
         "h": 197,
@@ -216,9 +301,9 @@
         "idx": 7,
         "anim": "up",
         "delay": 1.4,
-        "x": 1044.203125,
+        "x": 998.875,
         "y": 317.59375,
-        "w": 505.796875,
+        "w": 491.125,
         "h": 481.390625,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s2_07.png"
       },
@@ -234,12 +319,22 @@
       },
       {
         "idx": 9,
+        "anim": "pop",
+        "delay": 0.6,
+        "x": 1437.2894287109375,
+        "y": 7.903007507324219,
+        "w": 482.7105712890625,
+        "h": 521.1939697265625,
+        "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s2_09.png"
+      },
+      {
+        "idx": 10,
         "anim": "spin",
         "delay": 1.9,
-        "x": 1500,
-        "y": 90,
-        "w": 300,
-        "h": 300,
+        "x": 1600,
+        "y": 780,
+        "w": 230,
+        "h": 230,
         "gif": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/assets/gifs/fetch2.gif",
         "ring": [
           62,
@@ -818,7 +913,7 @@
         "anim": "pop",
         "delay": 0.8,
         "x": 436.640625,
-        "y": 246.25,
+        "y": 213.25,
         "w": 1046.703125,
         "h": 277.5,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s6_04.png"
@@ -828,30 +923,40 @@
         "anim": "up",
         "delay": 1,
         "x": 613.890625,
-        "y": 413.75,
+        "y": 380.75,
         "w": 692.21875,
         "h": 178,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s6_05.png"
       },
       {
         "idx": 6,
-        "anim": "drop",
-        "delay": 1.3,
-        "x": 825,
-        "y": 511.75,
-        "w": 270,
-        "h": 270,
+        "anim": "up",
+        "delay": 1.15,
+        "x": 390.9375,
+        "y": 472.75,
+        "w": 1138.125,
+        "h": 186,
         "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s6_06.png"
       },
       {
         "idx": 7,
+        "anim": "drop",
+        "delay": 1.4,
+        "x": 835,
+        "y": 568.75,
+        "w": 250,
+        "h": 250,
+        "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s6_07.png"
+      },
+      {
+        "idx": 8,
         "anim": "up",
-        "delay": 1.6,
+        "delay": 1.7,
         "x": 649.59375,
-        "y": 681.75,
+        "y": 714.75,
         "w": 620.8125,
         "h": 152,
-        "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s6_07.png"
+        "png": "/Users/aryashjain/repositories/Hackathon/IdeaChange/presentation/export/build/s6_08.png"
       }
     ]
   ]

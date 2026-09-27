@@ -17,6 +17,7 @@ const CAPTURE_CSS = `
   html.cap .slide .a { opacity: 1 !important; }
   html.cap #floaters, html.cap #nav, html.cap #progress, html.cap #help { display: none !important; }
   html.cap .cap-hide { visibility: hidden !important; }
+  html.cap .bouncer { transform: translate(640px, -30px) !important; }
   html.cap .cap-show { visibility: visible !important; }
 `;
 

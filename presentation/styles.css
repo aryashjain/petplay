@@ -123,7 +123,7 @@ h3 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
 }
 @keyframes logo-bounce { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-12px) rotate(180deg); } }
 
-.woah { display: block; color: var(--yellow); font-size: 170px; line-height: 1; margin-top: 6px; }
+.woah { display: block; color: var(--yellow); font-size: 150px; line-height: 1; margin-top: 4px; }
 .woah, .woah i { font-style: normal; }
 .woah i { display: inline-block; animation: woah 1.4s ease-in-out infinite; }
 .woah i:nth-child(1) { animation-delay: .1s; color: var(--pink); }
@@ -132,15 +132,16 @@ h3 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
 .woah i:nth-child(4) { animation-delay: .4s; color: var(--orange); }
 @keyframes woah { 0%, 100% { transform: translateY(0) scale(1); } 30% { transform: translateY(-26px) scale(1.2) rotate(-6deg); } }
 
-.facts { display: flex; gap: 30px; margin-top: 40px; width: 1180px; }
+.facts { display: flex; gap: 26px; margin-top: 28px; width: 1180px; }
 .fact { transition: translate .3s, rotate .3s;
-  flex: 1; padding: 30px 30px 24px; border-radius: 30px; background: var(--card); border: 2px solid var(--card-b);
+  flex: 1; padding: 22px 26px 18px; border-radius: 28px; background: var(--card); border: 2px solid var(--card-b);
   backdrop-filter: blur(10px); transition: translate .3s, scale .3s, rotate .3s;
 }
 .fact:hover { translate: 0 -10px; rotate: -1deg; }
-.fact p { font-size: 23px; line-height: 1.45; opacity: .92; }
-.fact small { display: block; margin-top: 14px; font-size: 16px; opacity: .6; font-style: italic; }
-.fact-ico { font-size: 58px; margin-bottom: 8px; animation: ico 2.4s ease-in-out infinite; display: inline-block; }
+.fact p { font-size: 21px; line-height: 1.4; opacity: .92; }
+.fact h3 { display: inline-block; vertical-align: middle; margin-left: 10px; }
+.fact small { display: block; margin-top: 8px; font-size: 15px; opacity: .6; font-style: italic; }
+.fact-ico { font-size: 46px; margin-bottom: 6px; animation: ico 2.4s ease-in-out infinite; display: inline-block; vertical-align: middle; }
 .fact:nth-child(2) .fact-ico { animation-delay: .4s; }
 .fact:nth-child(3) .fact-ico { animation-delay: .8s; }
 @keyframes ico { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(1.18) rotate(8deg); } }
@@ -150,23 +151,22 @@ h3 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
 .s1 .g3 { right: 320px; top: 400px; --rot: 5deg; width: 230px; height: 230px; box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 0 6px var(--yellow); }
 .s1 .g4 { right: 70px; top: 580px; --rot: -8deg; width: 240px; height: 240px; box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 0 6px var(--blue); }
 
-.eq { position: absolute; left: 110px; right: 110px; bottom: 80px; height: 70px; display: flex; gap: 14px; align-items: flex-end; }
-.eq span {
-  flex: 1; border-radius: 10px 10px 4px 4px; height: 30%;
-  background: linear-gradient(to top, var(--pink), var(--yellow));
-  animation: eq 1s ease-in-out infinite alternate; opacity: .8;
+.play-label {
+  position: absolute; left: 110px; top: 842px; width: 250px; padding: 16px 22px; border-radius: 24px;
+  background: linear-gradient(135deg, var(--mint), var(--blue)); color: #10223d; box-shadow: 0 12px 30px rgba(62, 242, 192, .35);
 }
-.eq span:nth-child(3n) { background: linear-gradient(to top, var(--blue), var(--mint)); animation-duration: .7s; }
-.eq span:nth-child(3n+1) { animation-duration: 1.3s; }
-.eq span:nth-child(4n) { animation-duration: .55s; }
-.eq span:nth-child(2) { animation-delay: -.3s; } .eq span:nth-child(5) { animation-delay: -.6s; }
-.eq span:nth-child(7) { animation-delay: -.2s; } .eq span:nth-child(9) { animation-delay: -.8s; }
-.eq span:nth-child(11) { animation-delay: -.5s; }
-@keyframes eq { from { height: 12%; } to { height: 100%; } }
+.play-label b { display: block; color: #10223d; font: 700 30px Fredoka, sans-serif; }
+.play-label span { font-size: 18px; font-weight: 600; }
+.s1 .play { width: 140px; height: 140px; top: 820px; border-width: 6px; }
+.s1 .p1 { left: 400px; --rot: -6deg; }
+.s1 .p2 { left: 570px; --rot: 5deg; box-shadow: 0 16px 36px rgba(0,0,0,.45), 0 0 0 5px var(--yellow); }
+.s1 .p3 { left: 740px; --rot: -4deg; box-shadow: 0 16px 36px rgba(0,0,0,.45), 0 0 0 5px var(--mint); }
+.s1 .p4 { left: 910px; --rot: 6deg; box-shadow: 0 16px 36px rgba(0,0,0,.45), 0 0 0 5px var(--blue); }
+.s1 .p5 { left: 1080px; --rot: -5deg; box-shadow: 0 16px 36px rgba(0,0,0,.45), 0 0 0 5px var(--orange); }
 
 /* ================= SLIDE 2 ================= */
 .s2 h1 { font-size: 92px; }
-.story { display: flex; align-items: stretch; gap: 26px; margin-top: 34px; width: 1380px; }
+.story { display: flex; align-items: stretch; gap: 22px; margin-top: 34px; width: 1320px; }
 .story .arrow { align-self: center; }
 .step {
   position: relative; flex: 1; text-align: center; padding: 26px 24px 28px; border-radius: 34px;
@@ -220,7 +220,20 @@ h3 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
   box-shadow: inset -8px -8px 14px rgba(0, 0, 0, .25), 0 0 30px rgba(216, 245, 59, .6);
 }
 .piano-stage .hint { position: absolute; right: 0; top: 20px; }
-.s2 .g5 { right: 120px; top: 90px; --rot: 8deg; width: 300px; height: 300px; box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 0 6px var(--mint); }
+.s2 .g5 { right: 90px; bottom: 70px; --rot: 8deg; width: 230px; height: 230px; box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 0 6px var(--mint); }
+.product { position: absolute; right: 50px; top: 80px; width: 360px; rotate: 4deg; }
+.product-inner {
+  position: relative; padding: 16px 16px 18px; border-radius: 18px; background: var(--white); color: #2a0f45; text-align: center;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, .5), 0 0 0 6px var(--orange); animation: float 4.5s ease-in-out infinite;
+}
+.product-inner img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 10px; }
+.product .caption { font: 700 34px Fredoka, sans-serif; margin-top: 12px; }
+.product small { display: block; font-size: 15px; opacity: .7; margin-top: 2px; }
+.proto-tag {
+  position: absolute; top: -22px; left: -26px; z-index: 2; padding: 8px 18px; border-radius: 30px; rotate: -8deg;
+  font: 700 18px Fredoka, sans-serif; letter-spacing: 2px; color: #2a0f45;
+  background: var(--yellow); box-shadow: 0 8px 20px rgba(255, 210, 63, .55); animation: ico 2s ease-in-out infinite;
+}
 
 /* ================= SLIDE 3 ================= */
 .s3-grid { display: grid; grid-template-columns: 720px 1fr; gap: 60px; }
@@ -341,7 +354,7 @@ h3 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
 .s6 .c3 { left: 160px; bottom: 90px; --rot: 6deg; box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 0 6px var(--yellow); }
 .s6 .c4 { right: 160px; bottom: 90px; --rot: -6deg; box-shadow: 0 20px 50px rgba(0,0,0,.45), 0 0 0 6px var(--blue); }
 .big-ball {
-  width: 150px; height: 150px; border-radius: 50%; margin: 40px auto 20px; cursor: pointer; position: relative;
+  width: 130px; height: 130px; border-radius: 50%; margin: 30px auto 16px; cursor: pointer; position: relative;
   background: radial-gradient(circle at 35% 30%, #fff9a8, #d8f53b 40%, #9fc41a);
   box-shadow: inset -12px -12px 24px rgba(0, 0, 0, .25), 0 0 60px rgba(216, 245, 59, .6);
 }
@@ -369,3 +382,15 @@ h3 { font-size: 32px; font-weight: 600; margin-bottom: 8px; }
 
 /* screenshot/debug mode: ?shot skips entrance animations */
 .shot *, .shot *::before { animation-delay: 0s !important; animation-duration: .001s !important; transition: none !important; }
+
+/* thank-you team row */
+.team { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 34px; }
+.team-label { font-size: 26px; opacity: .85; margin-right: 6px; }
+.mate {
+  font: 600 32px Fredoka, sans-serif; padding: 10px 26px; border-radius: 40px;
+  background: var(--card); border: 2px solid var(--card-b); backdrop-filter: blur(10px);
+  animation: ico 2.4s ease-in-out infinite;
+}
+.mate:nth-child(2) { border-color: var(--pink); } .mate:nth-child(3) { border-color: var(--yellow); animation-delay: .3s; }
+.mate:nth-child(4) { border-color: var(--mint); animation-delay: .6s; } .mate:nth-child(5) { border-color: var(--blue); animation-delay: .9s; }
+#copy { margin-left: 10px; font-size: 13px; letter-spacing: .5px; white-space: nowrap; }

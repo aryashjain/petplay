@@ -2,32 +2,33 @@
 
 Every element becomes its own picture with a PowerPoint entrance animation
 (auto-play, timed like the HTML deck), GIFs stay animated inside circular
-frames, and each slide gets a transition + speaker notes.
+frames, and each slide gets a transition. Speaker notes go to SPEAKER_NOTES.md.
 
 Usage: python build_pptx.py
 """
 import json
-import struct
 from pathlib import Path
 
 from lxml import etree
 from pptx import Presentation
-from pptx.dml.color import RGBColor
-from pptx.enum.shapes import MSO_SHAPE
-from pptx.util import Emu, Pt
+from PIL import Image, ImageDraw, ImageSequence
+from pptx.util import Emu
 
 HERE = Path(__file__).parent
 BUILD = HERE / "build"
 OUT = HERE.parent / "Pawdio.pptx"
+NOTES_OUT = HERE.parent / "SPEAKER_NOTES.md"
 PX = 6350  # EMU per CSS px on a 1920x1080 canvas (13.333in wide)
 
 NOTES = [
     "Hook: music changes how dogs feel. Shelter studies found classical music meant more resting and less barking "
     "(Kogan et al., 2012), and soft rock / reggae lowered stress (Univ. of Glasgow & Scottish SPCA, 2017). "
-    "Dogs also hear up to ~45 kHz, way beyond our ~20 kHz. So what if their favourite toy made the music?",
+    "Dogs also hear up to ~45 kHz, way beyond our ~20 kHz. And dogs love to play: fetch, zoomies, tug. "
+    "So what if their favourite toy made the music?",
     "The idea: dogs love balls and they respond to music, so we fused them. Step 1, the dog just plays. "
     "Step 2, a motion sensor sealed in the ball feels every hit and spin 200 times a second. "
-    "Step 3, a web page turns that motion into live piano music that always stays in key.",
+    "Step 3, a web page turns that motion into live piano music that always stays in key. "
+    "On the right is our real prototype: a chew-proof caged ball with the sensor and battery sealed inside.",
     "Inside the ball: ESP32-C6 (RISC-V, Wi-Fi 6, BLE 5, deep sleep), a 6-axis MPU IMU on I2C "
     "(accelerometer + gyroscope), and a small sealed LiPo. Firmware samples at 200 Hz or more, applies a light "
     "low-pass filter, detects impacts from acceleration spikes, packs compact binary frames and streams them over "
@@ -39,7 +40,8 @@ NOTES = [
     "Future scope: the same tiny module fits any toy. Plushies that sing when squeezed, tug ropes that crescendo, "
     "cat toys, health and activity insights for owners and vets, multiple toys jamming as a band, and sensory / "
     "therapy toys for kids and senior dogs.",
-    "Thank you! Pawdio: every fetch is a song. Happy to take questions or show a live demo.",
+    "Thank you! Pawdio: every fetch is a song. Built by Laksh, Adarsh, Aryash and Ankit. "
+    "Happy to take questions or show a live demo.",
 ]
 
 # CSS entrance name -> (PowerPoint presetID, presetSubtype)
@@ -167,38 +169,67 @@ def transition_xml(i):
     )
 
 
-def gif_size(path):
-    with open(path, "rb") as f:
-        head = f.read(10)
-    return struct.unpack("<HH", head[6:10])
+def round_gif(it, bg):
+    """Bakes the circular crop + white border + coloured ring into the GIF frames.
+
+    Edge pixels are blended with the slide background behind them and everything
+    outside the ring is transparent, so it looks smooth in any viewer without
+    relying on picture geometry or group shapes (Keynote / Google Slides drop those).
+    """
+    ring_px, border = 6, it["border"]
+    size = round(it["w"]) + 2 * ring_px
+    ss = 3  # supersampling for anti-aliased circles
+    big = size * ss
+    left, top = it["x"] - ring_px, it["y"] - ring_px
+    scale = bg.width / 1920
+    patch = bg.crop((round(left * scale), round(top * scale), round((left + size) * scale), round((top + size) * scale)))
+    patch = patch.convert("RGBA").resize((big, big), Image.LANCZOS)
+
+    def disk(r):
+        m = Image.new("L", (big, big), 0)
+        c = big / 2
+        ImageDraw.Draw(m).ellipse((c - r, c - r, c + r, c + r), fill=255)
+        return m
+
+    outer = big / 2
+    white_r = (size / 2 - ring_px) * ss
+    inner_r = white_r - border * ss
+    base = patch.copy()
+    base.paste(Image.new("RGBA", (big, big), tuple(it["ring"]) + (255,)), (0, 0), disk(outer))
+    base.paste(Image.new("RGBA", (big, big), (255, 248, 240, 255)), (0, 0), disk(white_r))
+    inner_mask = disk(inner_r)
+    cut = Image.new("L", (size, size), 0)
+    ImageDraw.Draw(cut).ellipse((0, 0, size - 1, size - 1), fill=255)
+    cut = cut.point(lambda v: 255 if v > 0 else 0)
+
+    src = Image.open(it["gif"])
+    d = round(inner_r * 2)
+    frames, durations = [], []
+    for fr in ImageSequence.Iterator(src):
+        f = fr.convert("RGBA")
+        side = min(f.size)
+        f = f.crop(((f.width - side) // 2, (f.height - side) // 2, (f.width + side) // 2, (f.height + side) // 2))
+        f = f.resize((d, d), Image.LANCZOS)
+        layer = Image.new("RGBA", (big, big), (0, 0, 0, 0))
+        off = round(big / 2 - d / 2)
+        layer.paste(f, (off, off))
+        img = base.copy()
+        img.paste(layer, (0, 0), Image.composite(layer.getchannel("A"), Image.new("L", (big, big), 0), inner_mask))
+        img = img.resize((size, size), Image.LANCZOS)
+        img.putalpha(cut)
+        frames.append(img)
+        durations.append(fr.info.get("duration", 60) or 60)
+
+    out = BUILD / f"round_{Path(it['gif']).stem}_{size}.gif"
+    frames[0].save(out, save_all=True, append_images=frames[1:], duration=durations, loop=0, disposal=2, optimize=False)
+    return out, left, top, size
 
 
-def add_gif(slide, it):
-    x, y, w, h = (Emu(int(v * PX)) for v in (it["x"], it["y"], it["w"], it["h"]))
-    ring_px = 6
-    ring = slide.shapes.add_shape(MSO_SHAPE.OVAL, x - Emu(ring_px * PX), y - Emu(ring_px * PX),
-                                  w + Emu(2 * ring_px * PX), h + Emu(2 * ring_px * PX))
-    ring.fill.solid()
-    ring.fill.fore_color.rgb = RGBColor(*it["ring"])
-    ring.line.fill.background()
-    ring.shadow.inherit = False
-
-    pic = slide.shapes.add_picture(it["gif"], x, y, w, h)
-    gw, gh = gif_size(it["gif"])
-    if gw > gh:  # centre-crop to a square so the circle isn't squashed
-        c = (1 - gh / gw) / 2
-        pic.crop_left = pic.crop_right = c
-    elif gh > gw:
-        c = (1 - gw / gh) / 2
-        pic.crop_top = pic.crop_bottom = c
-    pic.auto_shape_type = MSO_SHAPE.OVAL
-    pic.line.color.rgb = RGBColor(0xFF, 0xF8, 0xF0)
-    pic.line.width = Pt(it["border"] * 0.75)
-
-    # group ring + picture so they rotate/animate together
-    grp = slide.shapes.add_group_shape([ring, pic])
-    grp.rotation = it["rot"]
-    return grp
+def add_gif(slide, it, bg):
+    path, left, top, size = round_gif(it, bg)
+    pic = slide.shapes.add_picture(str(path), Emu(int(left * PX)), Emu(int(top * PX)), Emu(int(size * PX)), Emu(int(size * PX)))
+    pic.rotation = it["rot"]
+    return pic
 
 
 def main():
@@ -207,6 +238,7 @@ def main():
     prs.slide_width = Emu(1920 * PX)
     prs.slide_height = Emu(1080 * PX)
     blank = prs.slide_layouts[6]
+    bg = Image.open(manifest["bg"]).convert("RGB")
 
     for i, items in enumerate(manifest["slides"]):
         slide = prs.slides.add_slide(blank)
@@ -215,7 +247,7 @@ def main():
         anims = []
         for it in sorted(items, key=lambda t: t["delay"]):
             if "gif" in it:
-                shape = add_gif(slide, it)
+                shape = add_gif(slide, it, bg)
                 rot = it["rot"]
             else:
                 shape = slide.shapes.add_picture(it["png"], Emu(int(it["x"] * PX)), Emu(int(it["y"] * PX)),
@@ -227,9 +259,14 @@ def main():
         sld.append(etree.fromstring(transition_xml(i)))
         sld.append(etree.fromstring(timing_xml(anims)))
 
-        slide.notes_slide.notes_text_frame.text = NOTES[i] if i < len(NOTES) else ""
 
     prs.save(OUT)
+    # Speaker notes go in a separate file: python-pptx's default notes master
+    # makes Keynote / Quick Look hang on import.
+    titles = ["Music makes dogs go WOAAH!", "The idea: what if the ball was the band?", "Tech 1: Hardware & Firmware",
+              "Tech 2: Web App", "Future scope", "Thank you!"]
+    script = "# Pawdio: speaker notes\n\n" + "\n\n".join(f"## {n + 1}. {t}\n\n{NOTES[n]}" for n, t in enumerate(titles))
+    NOTES_OUT.write_text(script + "\n")
     print(f"saved {OUT} ({OUT.stat().st_size / 1e6:.1f} MB)")
 
 
